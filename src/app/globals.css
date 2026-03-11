@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f5f7fb;
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-strong: rgba(255, 255, 255, 0.9);
+  --text: #0f172a;
+  --muted: #516076;
+  --line: rgba(86, 101, 128, 0.18);
+  --accent: #1d7ff2;
+  --accent-soft: rgba(29, 127, 242, 0.14);
+  --secondary: #0bb6b6;
+  --glow: rgba(32, 118, 246, 0.24);
+  --shadow-color: rgba(25, 38, 68, 0.12);
+}
+
+.dark {
+  --bg: #08111f;
+  --surface: rgba(9, 18, 35, 0.7);
+  --surface-strong: rgba(10, 20, 38, 0.9);
+  --text: #eef4ff;
+  --muted: #98a8c3;
+  --line: rgba(136, 155, 192, 0.18);
+  --accent: #71b8ff;
+  --accent-soft: rgba(113, 184, 255, 0.16);
+  --secondary: #5eead4;
+  --glow: rgba(94, 234, 212, 0.18);
+  --shadow-color: rgba(0, 0, 0, 0.32);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(88, 135, 255, 0.18), transparent 30%),
+    radial-gradient(circle at 80% 8%, rgba(61, 198, 184, 0.12), transparent 22%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.6), transparent 30%),
+    var(--bg);
+  color: var(--text);
+  font-feature-settings: "ss01" on, "cv02" on, "cv03" on;
+  min-height: 100vh;
+}
+
+.dark body {
+  background:
+    radial-gradient(circle at top left, rgba(43, 102, 199, 0.22), transparent 30%),
+    radial-gradient(circle at 85% 12%, rgba(16, 185, 129, 0.14), transparent 18%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 26%),
+    var(--bg);
+}
+
+* {
+  border-color: var(--line);
+}
+
+::selection {
+  background: rgba(29, 127, 242, 0.22);
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display tracking-tight;
+  }
+
+  p {
+    @apply leading-7;
+  }
+
+  a,
+  button,
+  input,
+  textarea {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply border border-line bg-surface shadow-glass backdrop-blur-2xl;
+  }
+
+  .soft-grid {
+    background-size: 32px 32px;
+    background-image: linear-gradient(to right, rgba(120, 131, 160, 0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(120, 131, 160, 0.12) 1px, transparent 1px);
+  }
+
+  .section-ring {
+    position: relative;
+  }
+
+  .section-ring::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(116, 186, 255, 0.42), rgba(255, 255, 255, 0), rgba(94, 234, 212, 0.28));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-accent via-sky-400 to-secondary bg-clip-text text-transparent;
+  }
+
+  .hide-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
