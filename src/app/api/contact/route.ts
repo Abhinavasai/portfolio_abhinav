@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? "abhinavatirunaga@ufl.edu";
+const TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? "abhitiru.dev@gmail.com";
 
 interface ContactBody {
   name: string;

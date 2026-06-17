@@ -17,7 +17,7 @@ export const siteConfig = {
   title: "AI Engineer & Full-Stack Developer",
   description:
     "Building RAG systems, intelligent data pipelines, and modern web experiences.",
-  email: "abhinavatirunaga@ufl.edu",
+  email: "abhitiru.dev@gmail.com",
   location: "Gainesville, FL, USA",
   github: "https://github.com/Abhinavasai",
   linkedin: "https://www.linkedin.com/in/abhinava-sai-tirunagari-8822721aa/",
