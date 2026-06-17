@@ -7,6 +7,7 @@ import "./globals.css";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import { CustomCursor } from "@/components/ui/cursor";
 import { siteConfig } from "@/lib/data";
 
 const bodyFont = Plus_Jakarta_Sans({
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
     <html lang="en" suppressHydrationWarning>
       <body className={`${bodyFont.variable} ${displayFont.variable} font-sans text-text antialiased`}>
         <ThemeProvider>
+          <CustomCursor />
           <div className="relative min-h-screen overflow-x-clip">
             <div className="pointer-events-none fixed inset-0 -z-20 opacity-60 dark:opacity-80">
               <div className="soft-grid absolute inset-0 [mask-image:radial-gradient(circle_at_center,black,transparent_75%)]" />

@@ -26,7 +26,7 @@ type NativeButtonProps = SharedProps & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const variants = {
   primary:
-    "border-transparent bg-[linear-gradient(135deg,rgba(29,127,242,1),rgba(11,182,182,0.92))] text-white shadow-[0_10px_40px_rgba(29,127,242,0.32)]",
+    "border-transparent bg-[linear-gradient(135deg,rgba(167,139,250,1),rgba(103,232,249,0.88))] text-white shadow-[0_10px_40px_rgba(167,139,250,0.34)]",
   secondary: "border-line bg-surface text-text hover:bg-surfaceStrong",
   ghost: "border-transparent bg-transparent text-text hover:bg-accentSoft"
 };

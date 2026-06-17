@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: `Projects | ${siteConfig.name}`,
-  description: "Selected AI, RAG, and full-stack engineering projects by Abhinava Sai Tirunagari."
+  description: "Selected AI, RAG, and full-stack engineering projects by Abhinav Sai Tirunagari."
 };
 
 export default function ProjectsPage() {

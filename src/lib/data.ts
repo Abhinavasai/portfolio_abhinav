@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 
 export const siteConfig = {
-  name: "Abhinava Sai Tirunagari",
+  name: "Abhinav Sai Tirunagari",
   title: "AI Engineer & Full-Stack Developer",
   description:
     "Building RAG systems, intelligent data pipelines, and modern web experiences.",
@@ -59,7 +59,7 @@ export const experiences = [
     company: "University of Florida",
     location: "Gainesville, FL, USA",
     type: "Part-Time",
-    period: "Jan 2026 – Present",
+    period: "Jan 2026 – Jun 2026",
     icon: Stethoscope,
     points: [
       "Apply AI, quality improvement, project management, and industrial and systems engineering methods to real-world healthcare quality and safety initiatives.",
@@ -72,7 +72,7 @@ export const experiences = [
     company: "Cognera Health",
     location: "Remote, USA",
     type: "Internship",
-    period: "Sep 2025 – Jan 2026",
+    period: "Jun 2025 – Dec 2025",
     icon: BrainCircuit,
     points: [
       "Developed mobile-responsive product experiences with React and TypeScript, partnering with cross-functional teams to define API contracts and ship user-facing features.",
@@ -85,7 +85,7 @@ export const experiences = [
     company: "ADP",
     location: "India",
     type: "Full-Time",
-    period: "Jul 2023 – Jun 2024",
+    period: "Jun 2023 – Jun 2024",
     icon: Workflow,
     points: [
       "Contributed to enterprise software delivery with an emphasis on dependable backend behavior, release quality, and issue resolution across production-facing systems.",
@@ -98,7 +98,7 @@ export const experiences = [
     company: "ADRIN-ISRO",
     location: "India",
     type: "Internship",
-    period: "Mar 2023 – Jun 2023",
+    period: "Jan 2023 – Jun 2023",
     icon: Activity,
     points: [
       "Supported research-oriented engineering work in a scientific environment, translating technical ideas into structured implementation and analysis tasks.",
