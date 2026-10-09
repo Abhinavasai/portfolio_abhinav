@@ -26,10 +26,11 @@ export function ThemeToggle() {
             type="button"
             onClick={() => setTheme(item.value)}
             className={cn(
-              "flex h-9 w-9 items-center justify-center rounded-full text-muted transition-colors duration-300",
-              active && "bg-accent text-white shadow-md"
+              "flex h-11 w-11 items-center justify-center rounded-full text-muted transition-colors duration-200",
+              active && "primary-button shadow-md"
             )}
             aria-label={`Switch theme to ${item.label}`}
+            aria-pressed={active}
             title={item.label}
           >
             <Icon className="h-4 w-4" />

@@ -7,8 +7,9 @@ import "./globals.css";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import { CustomCursor } from "@/components/ui/cursor";
 import { siteConfig } from "@/lib/data";
+import { ScrollProgress } from "@/components/ui/motion";
+import { AmbientScene } from "@/components/ui/ambient-scene";
 
 const bodyFont = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -41,13 +42,15 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
     <html lang="en" suppressHydrationWarning>
       <body className={`${bodyFont.variable} ${displayFont.variable} font-sans text-text antialiased`}>
         <ThemeProvider>
-          <CustomCursor />
-          <div className="relative min-h-screen overflow-x-clip">
+          <ScrollProgress />
+          <a href="#main" className="skip-link">Skip to content</a>
+          <div className="site-shell relative min-h-screen overflow-x-clip">
+            <AmbientScene />
             <div className="pointer-events-none fixed inset-0 -z-20 opacity-60 dark:opacity-80">
               <div className="soft-grid absolute inset-0 [mask-image:radial-gradient(circle_at_center,black,transparent_75%)]" />
             </div>
             <Navbar />
-            {children}
+            <main id="main">{children}</main>
             <Footer />
           </div>
         </ThemeProvider>

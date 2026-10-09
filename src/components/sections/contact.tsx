@@ -54,9 +54,9 @@ export function ContactSection() {
     <Container>
       <Section
         id="contact"
-        eyebrow="Contact"
-        title="If you need someone who can reason through AI quality and ship the product around it, let’s talk."
-        description="Open to roles and collaborations spanning RAG systems, AI evaluation, developer-facing platforms, and modern full-stack product work."
+        eyebrow="05 / Start a conversation"
+        title="Let's build something that matters."
+        description="Have an ambitious idea, an interesting problem, or a role in mind? I'd love to hear about it."
       >
         <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
           <Reveal>

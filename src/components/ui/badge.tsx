@@ -11,7 +11,7 @@ export function Badge({ children, className }: BadgeProps) {
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full border border-line bg-surface px-3 py-1 text-xs font-medium text-muted shadow-sm backdrop-blur-xl",
+        "kinetic-badge inline-flex max-w-full items-center rounded-full border border-line bg-surface px-3 py-1 text-sm font-medium leading-5 text-muted",
         className
       )}
     >

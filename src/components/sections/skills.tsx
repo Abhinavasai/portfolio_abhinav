@@ -10,9 +10,9 @@ export function SkillsSection() {
     <Container>
       <Section
         id="skills"
-        eyebrow="Skills"
-        title="A stack built for AI product delivery, not isolated demos."
-        description="Grouped by where they matter most in practice: model workflows, APIs, interfaces, infrastructure, and domain-facing execution."
+        eyebrow="04 / The toolkit"
+        title="From model to interface. And everything between."
+        description="The tools I reach for to turn complex problems into useful products."
       >
         <StaggerGroup className="grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
           {skillGroups.map((group) => {
@@ -26,9 +26,6 @@ export function SkillsSection() {
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-text">{group.title}</h3>
-                      <div className="mt-2 h-1.5 w-28 rounded-full bg-accentSoft">
-                        <div className="h-full w-4/5 rounded-full bg-[linear-gradient(90deg,var(--accent),var(--secondary))]" />
-                      </div>
                     </div>
                   </div>
                   <div className="mt-6 flex flex-wrap gap-2">

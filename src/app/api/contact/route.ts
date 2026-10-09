@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { siteConfig } from "@/lib/data";
 
-const TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? "abhitiru.dev@gmail.com";
+const TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? siteConfig.email;
 
 interface ContactBody {
   name: string;

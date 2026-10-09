@@ -34,8 +34,9 @@ export function ThemeProvider({ children }: PropsWithChildren) {
   const [resolvedTheme, setResolvedTheme] = useState<ResolvedTheme>("light");
 
   useEffect(() => {
-    const storedTheme = window.localStorage.getItem(STORAGE_KEY) as Theme | null;
-    const nextTheme = storedTheme ?? "system";
+    let storedTheme: string | null = null;
+    try { storedTheme = window.localStorage.getItem(STORAGE_KEY); } catch { /* Storage can be unavailable in embedded browsers. */ }
+    const nextTheme: Theme = storedTheme === "light" || storedTheme === "dark" ? storedTheme : "system";
     setTheme(nextTheme);
     setResolvedTheme(nextTheme === "system" ? getSystemTheme() : nextTheme);
   }, []);
@@ -68,7 +69,7 @@ export function ThemeProvider({ children }: PropsWithChildren) {
       resolvedTheme,
       setTheme: (nextTheme: Theme) => {
         setTheme(nextTheme);
-        window.localStorage.setItem(STORAGE_KEY, nextTheme);
+        try { window.localStorage.setItem(STORAGE_KEY, nextTheme); } catch { /* Keep theme switching functional without persistence. */ }
       }
     }),
     [resolvedTheme, theme]

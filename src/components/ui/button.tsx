@@ -1,10 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import type { AnchorHTMLAttributes, ButtonHTMLAttributes, MouseEvent, ReactNode } from "react";
+import type {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  MouseEvent,
+  ReactNode,
+} from "react";
 import { useRef } from "react";
 
 import { cn } from "@/lib/utils";
+import { useAccessibleMotion } from "./motion";
 
 type ButtonStyleProps = {
   variant?: "primary" | "secondary" | "ghost";
@@ -25,25 +31,28 @@ type LinkProps = SharedProps &
 type NativeButtonProps = SharedProps & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const variants = {
-  primary:
-    "border-transparent bg-[linear-gradient(135deg,rgba(167,139,250,1),rgba(103,232,249,0.88))] text-white shadow-[0_10px_40px_rgba(167,139,250,0.34)]",
+  primary: "primary-button border-transparent shadow-[0_10px_30px_var(--glow)]",
   secondary: "border-line bg-surface text-text hover:bg-surfaceStrong",
-  ghost: "border-transparent bg-transparent text-text hover:bg-accentSoft"
+  ghost: "border-transparent bg-transparent text-text hover:bg-accentSoft",
 };
 
 const sizes = {
   sm: "h-10 px-4 text-sm",
   md: "h-11 px-5 text-sm",
-  lg: "h-12 px-6 text-base"
+  lg: "h-12 px-6 text-base",
 };
 
-function classes({ variant = "primary", size = "md", className }: ButtonStyleProps) {
+function classes({
+  variant = "primary",
+  size = "md",
+  className,
+}: ButtonStyleProps) {
   return cn(
-    "inline-flex items-center justify-center rounded-full border font-medium transition-all duration-300 will-change-transform",
+    "motion-button inline-flex items-center justify-center rounded-full border font-medium transition-all duration-300",
     "focus-visible:ring-2 focus-visible:ring-sky-400/60",
     variants[variant],
     sizes[size],
-    className
+    className,
   );
 }
 
@@ -57,7 +66,11 @@ function useMagnetic<T extends HTMLElement>(enabled: boolean | undefined) {
   }
 
   function move(event: MouseEvent<T>) {
-    if (!enabled || !ref.current) {
+    if (
+      !enabled ||
+      !ref.current ||
+      !window.matchMedia("(hover: hover) and (pointer: fine)").matches
+    ) {
       return;
     }
 
@@ -72,15 +85,27 @@ function useMagnetic<T extends HTMLElement>(enabled: boolean | undefined) {
 }
 
 export function Button(props: LinkProps | NativeButtonProps) {
-  const magnetic = props.magnetic ?? true;
+  const reduced = useAccessibleMotion();
+  const magnetic =
+    !reduced &&
+    (props.magnetic ?? true) &&
+    !("disabled" in props && props.disabled);
   const { ref, move, reset } = useMagnetic<HTMLElement>(magnetic);
 
   if ("href" in props) {
-    const { href, children, className, variant, size, magnetic: _magnetic, ...rest } = props;
+    const {
+      href,
+      children,
+      className,
+      variant,
+      size,
+      magnetic: _magnetic,
+      ...rest
+    } = props;
     const isExternal = href.startsWith("http") || href.startsWith("mailto:");
     const isHashLink = href.startsWith("/#") || href.startsWith("#");
 
-    if (isExternal || isHashLink) {
+    if (isExternal || isHashLink || rest.download) {
       return (
         <a
           href={href}
@@ -111,7 +136,14 @@ export function Button(props: LinkProps | NativeButtonProps) {
     );
   }
 
-  const { children, className, variant, size, magnetic: _magnetic, ...rest } = props;
+  const {
+    children,
+    className,
+    variant,
+    size,
+    magnetic: _magnetic,
+    ...rest
+  } = props;
 
   return (
     <button
